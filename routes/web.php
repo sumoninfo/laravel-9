@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    dd(\App\Models\Post::first()->state);
     return view('welcome');
 });
