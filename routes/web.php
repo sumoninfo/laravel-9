@@ -17,3 +17,10 @@ Route::get('/', function () {
     dd(\App\Models\Post::first()->state);
     return view('welcome');
 });
+
+
+Route::get('/scout', function () {
+    return \App\Models\Post::search("deleniti")
+        ->where('id', 988)
+        ->paginate(10);
+});
