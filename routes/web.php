@@ -3,6 +3,7 @@
 use App\Enums\PostState;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//============Render a Blade String============
+Route::get('/blade-string', function () {
+    $string = Blade::render('{{ $greeting }}, @if(true) World @endif', ['greeting' => 'Hello']);
+    return view('blade-string', compact('string'));
+});
+
 
 //============Forced Scope Bindings============
 Route::get('/users/{user}/posts/{post}', function (User $user, Post $post) {
