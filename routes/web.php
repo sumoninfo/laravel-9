@@ -2,6 +2,7 @@
 
 use App\Enums\PostState;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//============Forced Scope Bindings============
+Route::get('/users/{user}/posts/{post}', function (User $user, Post $post) {
+    return $post;
+})->scopeBindings();
+
+
 //============Laravel Scout Database Engine============
 Route::get('/scout', function () {
     return Post::search("deleniti")
@@ -30,7 +37,6 @@ Route::get('/scout', function () {
 Route::get('/full-text', function () {
     return Post::whereFullText('body', 'body 1')->count();
 });
-
 
 // ==========Enum Attribute Casting==============
 Route::get('/posts/{state}', function (PostState $state) {
