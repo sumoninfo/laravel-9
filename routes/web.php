@@ -19,7 +19,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('home');
+
+//============New Helper Functions============
+Route::get('/helper', function () {
+//    return \Illuminate\Support\Str::of('Hello World')->append(" Appended");
+//    return str('lorem dsfsd sdfsd')->title();
+
+//    return redirect()->route('home');
+    return to_route('home');
 });
+
 
 //============Render a Blade String============
 Route::get('/blade-string', function () {
