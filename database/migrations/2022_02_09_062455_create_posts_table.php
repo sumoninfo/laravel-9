@@ -16,7 +16,7 @@ return new class extends Migration {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('body')->nullable();
+            $table->text('body')->fulltext();
 //            $table->enum('state', (array)PostState::class);
 //            $table->enum('state', ['draft', 'published', 'archived']);
             $table->string('state')->default('draft');

@@ -19,6 +19,10 @@ Route::get('/', function () {
 });
 
 
+Route::get('/full-text', function () {
+    return \App\Models\Post::whereFullText('body', 'body 1')->count();
+});
+
 Route::get('/scout', function () {
     return \App\Models\Post::search("deleniti")
         ->where('id', 988)
