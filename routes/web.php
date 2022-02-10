@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\PostState;
+use App\Http\Controllers\HomeController;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Blade;
@@ -20,6 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+//============Controller Route Groups============
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/about', 'about')->name('about');
+    Route::get('/contact', 'contact')->name('contact');
+});
 
 //============New Helper Functions============
 Route::get('/helper', function () {
