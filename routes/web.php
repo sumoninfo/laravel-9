@@ -64,9 +64,9 @@ Route::get('/full-text', function () {
 });
 
 // ==========Enum Attribute Casting==============
-Route::get('/posts/{state}', function (PostState $state) {
-    dd($state);
-});
+//Route::get('/posts/{state}', function (PostState $state) {
+//    dd($state);
+//});
 Route::get('/enum', function () {
 //update the post set status
     /*$updatePost = Post::query()->inRandomOrder()->first();
@@ -86,3 +86,13 @@ Route::get('/enum', function () {
     dd($post->state->value);
     dd(Post::first()->state->value);
 });
+
+
+//===========Simplified Accessors and Mutators============
+Route::get('/posts/{post}', function (Post $post) {
+    return $post;
+})->name('posts.show');
+
+Route::get('/users/{user}', function (User $user) {
+    return $user;
+})->name('posts.show');
